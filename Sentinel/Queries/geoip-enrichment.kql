@@ -1,0 +1,18 @@
+This KQL query shows us how to convert an attacker's IP address into geographic information using 'GeoIP_List'
+
+```kusto
+Syslog
+| where TimeGenerated > ago(30d)
+| where ProcessName == "sshd"
+| where SyslogMessage has "Failed password"
+| extend AttackerIP = extract(@"from\s+((?:\d{1,3}\.){3}\d{1,3})", 1, SyslogMessage)
+| where isnotempty(AttackerIP)
+| evaluate ipv4_lookup(_GetWatchlist("GeoIP_List"), AttackerIP, network)
+| extend Lat = todouble(latitude)
+| extend Lon = todouble(longitude)
+| where isnotnull(Lat) and isnotnull(Lon)
+| summarize FailureCount = count() by AttackerIP, Lat, Lon, city, country
+| extend friendly_location = strcat(city, " (", country, ")")
+| project FailureCount, AttackerIP, Lat, Lon, city, country, friendly_location
+| order by FailureCount desc
+```
