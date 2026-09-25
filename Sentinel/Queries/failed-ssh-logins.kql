@@ -11,7 +11,8 @@ Finally, it displays them from newest to oldest.
 
 All of this is part of our baseline detection for failed SSH login attempts.
 
-```kusto
+-----
+
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
@@ -22,4 +23,3 @@ Syslog
     SyslogMessage
 | order by TimeGenerated desc
 
-```

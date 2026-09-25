@@ -1,4 +1,4 @@
-// This KQL query allows us to populate our SSH Attack Intelligence Dashboard
+//This KQL query allows us to populate our SSH Attack Intelligence Dashboard
 
 Syslog
 | where TimeGenerated > ago(30d)

@@ -18,7 +18,9 @@ Finally, sort them from newest to oldest.
 
 All of this forms the basis of our detection for failed SSH login attempts.
 
-```kusto
+-----
+
+
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
@@ -31,4 +33,3 @@ Syslog
     AttackerIP,
     SyslogMessage
 | order by TimeGenerated desc
-```

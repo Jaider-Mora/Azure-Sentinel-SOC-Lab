@@ -1,6 +1,7 @@
 The SSH Attack Intelligence Dashboard in Microsoft Sentinel collects failed ‘sshd’ attempts on an endpoint, extracts the IP addresses of each attacker, and then processes this data alongside Syslog events to generate a heat map.  
 
-1. Porpuse 
+## 1. Porpuse 
+---
 
 The Microsoft Sentinel guide allows you to save and interact with the data from the monitoring list so that you can later generate a geographic heat map, with a higher volume representing the IP addresses most frequently used by attackers and a lower volume representing the IP addresses used less frequently.
 
@@ -18,7 +19,8 @@ The dashboard is intended for:
 
     SOC laboratory demonstrations.
 
-2. Data flow
+## 2. Data flow
+---
 
 ```text
 Linux Endpoint
@@ -56,33 +58,22 @@ SSH Attack Intelligence Dashboard
 
 ```    
 
-3. Data Sources
+## 3. Data Sources
+---
 
 The dashboard uses the following Sentinel resources:
 
----------------------------------------------------------------
-|         Resource          |           Purpose               |
-|---------------------------|---------------------------------|    
-|   workspace-soc           |       Stores the collected      |
-|                           |           Syslog events         |
-|---------------------------|---------------------------------|       
-|    GeoIP_List             |  Provides geographic information| 
-|                           |         for IPv4 networks       |    
-|---------------------------|---------------------------------|
-|    Syslog                 |  Contains Linux authentication  |   
-|                           |            events               |  
-|---------------------------|---------------------------------|
-|    sshd                   |  Identifies SSH authentication  |
-|                           |             events              |
-|---------------------------|---------------------------------|
-|    Attacker_IP_List       |  Extracting attackers' IP       |   
-|                           |    addresses by aggregation:    |    
-|                           |    AttackerIP, Lat, Lon, city,  |   
-|                           |    country, friendly_location   |  
----------------------------------------------------------------
+| Resource | Purpose |
+|---|---|
+| `workspace-soc` | Stores the collected Syslog events |
+| `GeoIP_List` | Provides geographic information for IPv4 networks |
+| `Syslog` | Contains Linux authentication events |
+| `sshd` | Identifies SSH authentication events |
+| `Attacker_IP_List` | Contains aggregated attacker information including `AttackerIP`, `Lat`, `Lon`, `city`, `country`, and `friendly_location` |
 
 
-4. Detection Logic
+## 4. Detection Logic
+---
 
 The dashboard searches for failed SSH authentication attempts within the previous 30 days.
 
@@ -106,7 +97,8 @@ The attacker IP address is extracted from the Syslog message:
 
 Only events containing a successfully extracted IP address are processed.
 
-5. GeoIP Enrichment
+## 5. GeoIP Enrichment
+---
 
 The extracted IP addresses are matched against the GeoIP_List Watchlist using the ipv4_lookup() operator.
 
@@ -137,7 +129,8 @@ The coordinates are converted to numeric values before being used by the map:
 
 ```
 
-6. Attack Aggregation
+## 6. Attack Aggregation
+---
 
 The dashboard groups failed authentication attempts by attacker IP and geographic location.
 
@@ -157,12 +150,12 @@ The location label is generated using:
 
 ```
 
-7. Complete KQL Query
+## 7. Complete KQL Query
+---
 
 The following query is used by the dashboard:
 
-```
-
+```kusto
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
@@ -181,40 +174,38 @@ Syslog
 
 ```
 
-8. Map Configuration
+## 8. Map Configuration
+---
 
 The Workbook uses a geographic map visualization based on latitude and longitude.
 
----------------------------------------------------------------
-|       Map Setting         |             Value               |
-|---------------------------|---------------------------------|    
-|   Setting Information     |       Latitude and Longitude    |
-|---------------------------|---------------------------------|       
-|         Latitude          |              Lat                | 
-|---------------------------|---------------------------------|
-|         Longitude         |              Lon                |   
-|---------------------------|---------------------------------|
-|           Size            |          FailureCount           |
-|---------------------------|---------------------------------|
-|     Size Agregattion      |              Sum                | 
-|---------------------------|---------------------------------|
-|           Label           |        friendly_location        | 
----------------------------------------------------------------
+| Map Setting         | Value                    |
+|---------------------|--------------------------|
+| Setting Information | Latitude and Longitude   |
+| Latitude            | `Lat`                    |
+| Longitude           | `Lon`                    |
+| Size                | `FailureCount`           |
+| Size Aggregation    | `Sum`                    |
+| Label               | `friendly_location`      |
 
 The map marker size is based on the number of failed SSH authentication attempts associated with each attacker IP.
 
-9. Workbook JSON
+## 9. Workbook JSON
+---
 
 The Workbook configuration is exported and stored in the repository:
 
+```
 Sentinel/
 └── WorkBooks/
     ├── README.md
     └── ssh-attack-map.json
+```
 
 The JSON file allows the visualization configuration to be version-controlled and reused as part of the laboratory deployment.
 
-10. Interpretation
+## 10. Interpretation
+---
 
 The map provides a geographic representation of the IP addresses associated with failed SSH authentication attempts.
 
@@ -224,7 +215,8 @@ The geographic information should be considered an approximation. IP geolocation
 
 Therefore, geographic information should be treated as contextual enrichment rather than definitive attribution.
 
-11. Limitations
+## 11. Limitations
+---
 
 The dashboard has several limitations:
 
@@ -240,11 +232,13 @@ Private IP addresses cannot be reliably geolocated through public IP geolocation
 
 Geographic location alone does not establish attacker identity.
 
-12. Security Monitoring Value
+## 12. Security Monitoring Value
+---
 
 The dashboard demonstrates how raw authentication telemetry can be transformed into contextual security information.
 
 The implemented workflow combines:
+
 
 Event Detection
       +

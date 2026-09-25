@@ -1,6 +1,6 @@
-This KQL query shows us how to convert an attacker's IP address into geographic information using 'GeoIP_List'
+//This KQL query shows us how to convert an attacker's IP address into geographic information using 'GeoIP_List'
 
-```kusto
+
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
@@ -15,4 +15,3 @@ Syslog
 | extend friendly_location = strcat(city, " (", country, ")")
 | project FailureCount, AttackerIP, Lat, Lon, city, country, friendly_location
 | order by FailureCount desc
-```
