@@ -129,7 +129,7 @@ Failed password for invalid user admin from 192.168.1.50 port 54321 ssh2
 The query extracts:
 
 ```text
-192.168.1.50
+91.92.42.178
 ```
 
 using a regular expression:
@@ -307,6 +307,7 @@ The main lesson from this project was understanding the complete path from raw s
 
 The laboratory implemented the following process:
 
+```text
 Telemetry
     |
     v
@@ -320,5 +321,6 @@ Contextual Enrichment
     |
     v
 Visualization
+```
 
 The project therefore demonstrates a practical SOC workflow using Linux authentication telemetry, Azure Monitor Agent, Microsoft Sentinel, KQL, Watchlists, GeoIP enrichment, and Workbooks.
