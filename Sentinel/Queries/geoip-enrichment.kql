@@ -1,6 +1,5 @@
 //This KQL query shows us how to convert an attacker's IP address into geographic information using 'GeoIP_List'
 
-
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
