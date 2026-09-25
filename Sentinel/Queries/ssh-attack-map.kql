@@ -1,6 +1,5 @@
-This KQL query allows us to populate our SSH Attack Intelligence Dashboard
+// This KQL query allows us to populate our SSH Attack Intelligence Dashboard
 
-```kusto
 Syslog
 | where TimeGenerated > ago(30d)
 | where ProcessName == "sshd"
@@ -16,4 +15,3 @@ Syslog
 | project FailureCount, AttackerIP, Lat, Lon, city, country, friendly_location
 | order by FailureCount desc
 | render scatterchart with (kind = map)
-```
