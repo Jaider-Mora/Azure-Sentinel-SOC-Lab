@@ -329,7 +329,7 @@ Therefore, GeoIP information is treated as **contextual enrichment for security 
 ```text
 GeoIP/
 ├── IP2LOCATION-LITE-DB11.CSV
-├── atacckerip_list.txt
+├── attackerip_list.txt
 ├── convertir_geoip.py
 ├── crear_geoip_watchlist.py
 ├── optimizar_geoip.py
