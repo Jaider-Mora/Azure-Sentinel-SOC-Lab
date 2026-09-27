@@ -243,7 +243,7 @@ Event Detection
       +
 IP Extraction
       +
-Threat Context
+GeoIP Enrichment
       +
 Geographic Enrichment
       +

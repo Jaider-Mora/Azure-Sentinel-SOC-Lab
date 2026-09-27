@@ -190,4 +190,4 @@ The laboratory is intended for controlled security monitoring and detection expe
 * IPv4 network matching
 * GeoIP data processing
 * Security event visualization
-* SOC-oriented investigation workflow
+* Security monitoring workflow
