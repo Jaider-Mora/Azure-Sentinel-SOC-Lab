@@ -1,14 +1,23 @@
 # Azure-Sentinel-SOC-Lab
 
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white)
+![Microsoft Sentinel](https://img.shields.io/badge/Microsoft%20Sentinel-0078D4?style=flat&logo=microsoft&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![KQL](https://img.shields.io/badge/KQL-Kusto-blue)
+![License](https://img.shields.io/github/license/Jaider-Mora/Azure-Sentinel-SOC-Lab)
+![Last Commit](https://img.shields.io/github/last-commit/Jaider-Mora/Azure-Sentinel-SOC-Lab)
+
 Hands-on SOC laboratory designed to simulate and investigate SSH authentication attacks against a Linux endpoint using Microsoft Sentinel as the SIEM.
 
 The project implements centralized Syslog ingestion, failed SSH authentication detection, attacker IP extraction, GeoIP enrichment using a Sentinel Watchlist, and geographic visualization through a custom Workbook.
+
+![alt text](image.png)
 
 ## Project Overview
 
 This laboratory demonstrates an end-to-end security monitoring workflow:
 
-```text
+```mermaid
 Linux Endpoint
       |
       v
@@ -105,7 +114,7 @@ See [`Evidence/README.md`](Evidence/README.md) for the complete evidence flow.
 
 ## Repository Structure
 
-```text
+```mermaid
 Azure-Sentinel-SOC-Lab/
 │
 ├── Architecture/
