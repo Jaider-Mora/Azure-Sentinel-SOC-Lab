@@ -10,17 +10,17 @@ The evidence documents the main stages of the telemetry pipeline, from the Linux
 
 ## Evidence Files
 
-| File                      | Description                                                              |
-| ------------------------- | ------------------------------------------------------------------------ |
-| `01.azure-vm.png`         | Shows the Linux virtual machine used as the monitored endpoint in Azure. |
-| `02.ama-running.png`      | Shows the Azure Monitor Agent running on the Linux endpoint.             |
-| `03.dcr.png`              | Shows the Data Collection Rule configured for Syslog collection.         |
-| `03.dcr-data-sources.png` | Shows the Syslog data sources configured in the Data Collection Rule.    |
-| `03.dcr-resources.png`    | Shows the resources associated with the Data Collection Rule.            |
+| File | Description |
+|---|---|
+| `01.azure-vm.png` | Shows the Linux virtual machine used as the monitored endpoint in Azure. |
+| `02.ama-running.png` | Shows the Azure Monitor Agent running on the Linux endpoint. |
+| `03.dcr.png` | Shows the Data Collection Rule configured for Syslog collection. |
+| `03.dcr-data-source.png` | Shows the data source configuration of the Data Collection Rule. |
+| `03.dcr-resources.png` | Shows the resources associated with the Data Collection Rule. |
 | `04.syslog-ingestion.png` | Shows Linux Syslog events successfully ingested into Microsoft Sentinel. |
-| `05.failed-ssh.png`       | Shows detected failed SSH authentication attempts.                       |
-| `06.geoip-enrichment.png` | Shows failed SSH events enriched with geographic information.            |
-| `07.attack-map.png`       | Shows the geographic visualization of the detected SSH activity.         |
+| `05.failed-ssh.png` | Shows detected failed SSH authentication attempts. |
+| `06.geoip-enrichment.png` | Shows failed SSH events enriched with geographic information. |
+| `07.attack-map.png` | Shows the geographic visualization of the detected SSH activity. |
 
 ---
 

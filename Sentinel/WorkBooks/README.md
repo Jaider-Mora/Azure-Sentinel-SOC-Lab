@@ -69,7 +69,6 @@ The dashboard uses the following Sentinel resources:
 | `GeoIP_List` | Provides geographic information for IPv4 networks |
 | `Syslog` | Contains Linux authentication events |
 | `sshd` | Identifies SSH authentication events |
-| `Attacker_IP_List` | Contains aggregated attacker information including `AttackerIP`, `Lat`, `Lon`, `city`, `country`, and `friendly_location` |
 
 
 ## 4. Detection Logic
