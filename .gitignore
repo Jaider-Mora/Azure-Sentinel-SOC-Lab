@@ -1,0 +1,6 @@
+# GeoIP source dataset
+GeoIP/IP2LOCATION-LITE-DB11.CSV
+
+# Generated GeoIP files
+GeoIP/geoip.csv
+GeoIP/geoip_optimizado.csv
