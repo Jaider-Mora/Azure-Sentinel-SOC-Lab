@@ -11,44 +11,24 @@ Hands-on SOC laboratory designed to simulate and investigate SSH authentication 
 
 The project implements centralized Syslog ingestion, failed SSH authentication detection, attacker IP extraction, GeoIP enrichment using a Sentinel Watchlist, and geographic visualization through a custom Workbook.
 
-![alt text](image.png)
+![SSH Attack Map](Evidence/image.png)
 
 ## Project Overview
 
 This laboratory demonstrates an end-to-end security monitoring workflow:
 
 ```mermaid
-Linux Endpoint
-      |
-      v
-SSH Authentication Logs
-      |
-      v
-Syslog
-      |
-      v
-Azure Monitor Agent
-      |
-      v
-Data Collection Rule
-      |
-      v
-Log Analytics Workspace
-      |
-      v
-Microsoft Sentinel
-      |
-      v
-Failed SSH Detection
-      |
-      v
-Attacker IP Extraction
-      |
-      v
-GeoIP Enrichment
-      |
-      v
-SSH Attack Map
+flowchart TD
+    A[Linux Endpoint] --> B[SSH Authentication Logs]
+    B --> C[Syslog]
+    C --> D[Azure Monitor Agent]
+    D --> E[Data Collection Rule]
+    E --> F[Log Analytics Workspace]
+    F --> G[Microsoft Sentinel]
+    G --> H[Failed SSH Detection]
+    H --> I[Attacker IP Extraction]
+    I --> J[GeoIP Enrichment]
+    J --> K[SSH Attack Map]
 ```
 
 ## Technologies
@@ -114,7 +94,7 @@ See [`Evidence/README.md`](Evidence/README.md) for the complete evidence flow.
 
 ## Repository Structure
 
-```mermaid
+```
 Azure-Sentinel-SOC-Lab/
 │
 ├── Architecture/
